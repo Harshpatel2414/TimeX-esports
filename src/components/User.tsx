@@ -1,14 +1,69 @@
-import React from 'react'
-import { DownOutlined } from '@ant-design/icons';
+import React, { useState } from 'react'
+import { CaretDownOutlined, CaretUpOutlined, FileTextOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import { Dropdown, Image, MenuProps } from 'antd';
+import Link from 'next/link';
+
+const items: MenuProps['items'] = [
+  {
+    key: '1',
+    label: <Link href="user">Profile</Link>,
+  },
+  { type: "divider" },
+  {
+    key: "2",
+    icon: <SettingOutlined />,
+    label: "Setting",
+  },
+  {
+    key: "3",
+    icon: <FileTextOutlined />,
+    label: "Terms and Conditions",
+  },
+  {
+    key: "4",
+    icon: <MessageOutlined />,
+    label: "Help & Support",
+  },
+  { type: "divider" },
+  {
+    key: "5",
+    danger: true,
+    label: "Logout",
+  },
+];
+
+
 const User = () => {
+
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
-    <div className='flex gap-4 items-center'>
-      <span>Username</span>
-      <div>
-        <img className='w-10 h-10 border-2 object-cover overflow-hidden object-center border-primary rounded-full' src="/images/char1.png" alt="" />
+    <Dropdown overlayStyle={{
+
+    }} menu={{ items }} >
+      <div className='flex gap-4 items-center'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <span>Username</span>
+        <div className='w-10 h-10 border-2 object-cover overflow-hidden object-center border-primary rounded-full'>
+          <Image className='' src="/images/char1.png" alt="profile" preview={false} />
+        </div>
+        {isHover ? (
+          <CaretUpOutlined />
+        ) : (
+          <CaretDownOutlined />
+        )}
       </div>
-      <DownOutlined/>
-    </div>
+    </Dropdown>
   )
 }
 

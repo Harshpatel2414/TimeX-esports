@@ -19,9 +19,12 @@
 body {
   scroll-behavior: smooth;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -39,11 +42,11 @@ body {
 }
 
 .card-heading {
-  @apply text-xl capitalize font-semibold tracking-wider
+  @apply text-xl capitalize font-semibold tracking-wider;
 }
 
 .card-subheading {
-  @apply text-sm text-zinc-600
+  @apply text-sm text-zinc-600;
 }
 
 .pills {
