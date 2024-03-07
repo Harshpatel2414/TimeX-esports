@@ -1,11 +1,11 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const Logo = () => {
     return (
         <div className=" flex gap-4 items-center text-xl font-bold">
             <Link href='/'>
-                <img className='h-10' src="/images/logo.png" alt="TIM3-X" />
+                <Image width={90} height={40} quality={100} className='h-10' src="/images/logo.png" alt="TIM3-X" />
             </Link>
         </div>
     )

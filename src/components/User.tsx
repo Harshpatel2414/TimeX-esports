@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { CaretDownOutlined, CaretUpOutlined, FileTextOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import { Dropdown, Image, MenuProps } from 'antd';
+import { Dropdown, MenuProps } from 'antd';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const items: MenuProps['items'] = [
   {
@@ -55,7 +56,7 @@ const User = () => {
       >
         <span>Username</span>
         <div className='w-10 h-10 border-2 object-cover overflow-hidden object-center border-primary rounded-full'>
-          <Image className='' src="/images/char1.png" alt="profile" preview={false} />
+          <Image width={40} height={40} quality={100} className='' src="/images/char1.png" alt="profile" />
         </div>
         {isHover ? (
           <CaretUpOutlined />

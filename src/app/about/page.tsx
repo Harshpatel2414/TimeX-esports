@@ -1,4 +1,4 @@
-import SectionHead from '@/components/SectionHead'
+import Image from 'next/image'
 import AboutCard from '../../components/AboutCard'
 import { about } from '../../data'
 import { FaTrophy } from 'react-icons/fa'
@@ -26,7 +26,7 @@ const About = () => {
         <div className="relative">
           <div className="bg-container top-0 rotate-12 -z-10 w-[300px] h-[300px] lg:w-[350px] lg:h-[350px] absolute"></div>
           <div className="w-[300px] h-[300px] lg:w-[350px] lg:h-[350px] flex items-center justify-center bg-zinc-900 p-8 z-10">
-            <img className="-mt-24" src="/images/pubg-character.png" alt="" />
+            <Image quality={100} width={300} height={300} className="-mt-24" src="/images/pubg-character.png" alt="" />
           </div>
           <div className="flex items-center gap-4 justify-end mt-10 ">
             <div className="text-right">
