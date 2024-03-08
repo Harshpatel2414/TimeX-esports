@@ -1,7 +1,7 @@
 // for history card
 type historyCardProps = {
     id?: string,
-    imageUrl?: string,
+    imageUrl?: string | any,
     match?: string,
     matchtype?: string,
     winamount?: string,
