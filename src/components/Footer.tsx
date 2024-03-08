@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { FaInstagram, FaTelegramPlane, FaTwitter, FaWhatsapp } from 'react-icons/fa'
@@ -5,10 +6,10 @@ import { FaInstagram, FaTelegramPlane, FaTwitter, FaWhatsapp } from 'react-icons
 const Footer = () => {
     return (
         <div className='bg-zinc-950'>
-            <div className='grid md:grid-cols-2 lg:grid-cols-4 p-5 gap-10 py-10 border-t-2 border-zinc-700'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-4 p-5 gap-10 py-10 border-t-2 border-container'>
                 <div className='flex flex-col justify-around gap-4'>
                     <div>
-                        <img className='w-24' src="/images/logo.png" alt="" />
+                        <Image width={96} height={40} quality={100} className='w-24' src="/images/logo.png" alt="" />
                     </div>
                     <p className='text-sm text-zinc-600'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, maxime Lorem ipsum dolor sit amet</p>
                     <span className='text-md'>Follow Us</span>
@@ -45,7 +46,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-            <div className='py-5 uppercase text-xs text-center border-t-2 border-zinc-700'>
+            <div className='py-5 uppercase text-xs text-center border-t-2 border-container'>
                 <p>Copyright &copy; 2024 - All Rights Reserved By</p>
                 <span className='text-container'>Time-X ESports</span>
             </div>

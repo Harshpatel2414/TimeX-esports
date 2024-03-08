@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Leaderboard = () => {
@@ -18,7 +19,7 @@ const Leaderboard = () => {
                     <tr className=' odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
                         <td className='p-2'>1</td>
                         <td className='flex items-center gap-4 p-2'>
-                            <img src="/images/char1.png" alt="" className='w-10 h-10 rounded-full overflow-hidden object-cover object-center border-2 border-container' />
+                            <Image quality={100} width={40} height={40} src="/images/char1.png" alt="" className='w-10 h-10 rounded-full overflow-hidden object-cover object-center border-2 border-container' />
                             <span>Shield Gaming</span>
                         </td>
                         <td className='p-2'>10</td>
@@ -28,7 +29,7 @@ const Leaderboard = () => {
                     <tr className=' odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
                         <td className='p-2'>2</td>
                         <td className='flex items-center gap-4 p-2'>
-                            <img src="/images/char1.png" alt="" className='w-10 h-10 rounded-full overflow-hidden object-cover object-center border-2 border-container' />
+                            <Image quality={100} width={40} height={40} src="/images/char1.png" alt="" className='w-10 h-10 rounded-full overflow-hidden object-cover object-center border-2 border-container' />
                             <span>Shield Gaming</span>
                         </td>
                         <td className='p-2'>10</td>

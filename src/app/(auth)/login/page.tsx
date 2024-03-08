@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { FaEye } from "react-icons/fa"
@@ -18,7 +19,7 @@ const Login = () => {
       <div className="mt-10 lg:w-1/3 drop-shadow-xl z-10">
         <h1 className="text-3xl lg:text-4xl  drop-shadow-xl shadow-container font-bold tracking-wider">Welcome Back !</h1>
         <p className="texte-sm text-zinc-700">Login to get more information about tournaments</p>
-        <img className="-mb-14 md:my-0 w-96 relative drop-shadow-xl shadow-black" src="/images/login.png" alt="" />
+        <Image width={384} height={384} quality={100} className="-mb-14 md:my-0 w-96 relative drop-shadow-xl shadow-black" src="/images/login.png" alt="" />
       </div>
       <div className="w-fit items-center flex flex-col">
         <form className="flex drop-shadow-xl mb-4  lg:w-80 flex-col gap-2 p-5 bg-zinc-900 rounded-xl">

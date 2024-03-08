@@ -1,18 +1,18 @@
 import SectionHead from '@/components/SectionHead'
 import TeamCard from '@/components/TeamCard'
 import { matchInfoCards, teams } from '@/data'
+import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { FaUsers, } from 'react-icons/fa'
+import { FaUsers } from 'react-icons/fa'
 
 const MatchDetails = ({ params }: any) => {
   let id = params.matchId
   return (
     <div className='px-5 flex items-center flex-col gap-10 py-20'>
       <SectionHead title={`Match ${id} - Details`} />
-      <div className='flex flex-col md:flex-row md:h-[350px] lg:w-3/4 rounded-2xl overflow-hidden bg-zinc-950'>
+      <div className='flex w-full flex-col md:flex-row md:h-[350px] lg:w-3/4 rounded-2xl overflow-hidden bg-zinc-900'>
         <div className='flex-2 w-full lg:max-w-[600px] '>
-          <img className='h-full w-full object-center object-cover overflow-hidden ' src="/images/bg2.jpg" alt="" />
+          <Image width={600} height={300} quality={100} className='h-full w-full object-center object-cover overflow-hidden ' src="/images/bg2.jpg" alt="" />
         </div>
         <div className='flex flex-1 flex-col gap-4 w-fit p-5 uppercase justify-center' >
           <h1 className='text-3xl text-container tracking-wider'>Erangle Squad</h1>

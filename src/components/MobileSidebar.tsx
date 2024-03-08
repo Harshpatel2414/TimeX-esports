@@ -4,13 +4,14 @@ import Navlinks from './Navlinks'
 import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
 import { FaRightFromBracket } from 'react-icons/fa6'
+import Image from 'next/image'
 
 const MobileSidebar = (props: any) => {
     let { currentUser, setCurrentUser } = useAuth()
     return (
         <div className='border-r-2 border-container z-20 fixed bg-zinc-900 gap-4 flex top-0 left-0 h-full w-[300px] flex-col md:hidden p-5 '>
             <div className='flex items-center justify-between w-full border-b-2 border-zinc-700 pb-2'>
-                <img className='w-20 curser-pointer' src="/images/logo.png" alt="Time-X" />
+                <Image width={80} height={40} quality={100} className='w-20 curser-pointer' src="/images/logo.png" alt="Time-X" />
                 <span className='font-bold cursor-pointer md:hidden text-xl text-on-primary ' onClick={() => props.setMenu(false)}>X</span>
             </div>
             <Navlinks setMenu={props.setMenu} />
