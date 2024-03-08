@@ -1,4 +1,4 @@
-const TeamCard = ({ name, imageUrl, slot }) => {
+const TeamCard = ({ name, imageUrl, slot }: TeamCardProps) => {
     return (
         <div className='relative flex p-5 items-center justify-between w-full bg-zinc-900 rounded-lg md:max-w-[350px]'>
             <span className='pills'>Team {slot}</span>

@@ -39,3 +39,10 @@ type UserType = {
     email: string | null;
     uid: string | null;
 }
+
+// team card
+type TeamCardProps = {
+    name: string,
+    imageUrl: string,
+    slot: string
+}
