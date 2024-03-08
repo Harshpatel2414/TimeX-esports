@@ -7,7 +7,7 @@ import { BiDollarCircle } from 'react-icons/bi'
 import { FaMap, FaUsers, FaWallet } from 'react-icons/fa'
 import { FaCircleArrowRight } from 'react-icons/fa6'
 
-const MatchDetails = ({ params }) => {
+const MatchDetails = ({ params }: any) => {
   let id = params.matchId
   return (
     <div className='px-5 flex items-center flex-col gap-10 py-20'>

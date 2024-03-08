@@ -1,4 +1,4 @@
-const AboutCard = ({ icon, title, para }) => {
+const AboutCard = ({ icon, title, para }: aboutCardProps) => {
     return (
         <div className="flex gap-4 flex-col items-center md:items-start p-5 rounded-lg">
             <div>

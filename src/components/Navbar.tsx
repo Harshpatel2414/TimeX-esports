@@ -1,16 +1,16 @@
 "use client"
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link';
 import { FaBars, FaUser } from "react-icons/fa";
 import MobileSidebar from './MobileSidebar';
 import Navlinks from './Navlinks';
 import Logo from './Logo';
-import { AuthContext } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import User from './User';
 
 const Navbar: React.FC = () => {
     const [menu, setMenu] = useState(false)
-    const { currentUser, setCurrentUser } = useContext(AuthContext)
+    const { currentUser, setCurrentUser } = useAuth()
     return (
         <nav className='flex items-center px-5 lg:px-20 h-20 justify-between bg-zinc-900 text-lg text-gray-300'>
             <Logo />
@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
             </div>
             <div className='flex items-center gap-4'>
                 <div className='hidden md:flex gap-2 items-center' >
-                    {currentUser ?  <User /> : <div className=' flex items-center gap-2 justify-center ' >
+                    {currentUser ? <User /> : <div className=' flex items-center gap-2 justify-center ' >
                         <p>User</p>
                         <div className='rounded-full h-10 w-10 border-2 border-container flex items-center justify-center' >
                             <FaUser />

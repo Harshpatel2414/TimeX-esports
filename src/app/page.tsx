@@ -2,11 +2,13 @@ import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
 import SectionHead from "@/components/SectionHead";
 import RegistrationForm from '@/components/RegistrationForm'
+import { AuthContextProvider } from "@/context/AuthContext";
 
 export default function Home() {
 
   return (
     <>
+
       <section className="gap-4 justify-center items-center flex flex-col w-full ">
         <div className="">
           <img className="h-screen w-full object-cover object-center opacity-25 -z-10 fixed top-0 left-0" src="/images/bg1.jpg" alt="" />
@@ -132,6 +134,7 @@ export default function Home() {
         </div>
       </div>
       <RegistrationForm />
+
     </>
   );
 }

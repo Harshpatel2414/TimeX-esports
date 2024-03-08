@@ -17,7 +17,7 @@ const App: React.FC = () => {
     const [isLeader, setIsLeader] = useState(false)
     const [playerCounter, setPlayerCounter] = useState(1)
     const [team, setTeam] = useState<Array<teamType>>([])
-    const [playerDetails, setPlayerDetails] = useState({
+    const [playerDetails, setPlayerDetails] = useState<teamType>({
         playerName: "",
         bgmiID: "",
         bgmiName: "",

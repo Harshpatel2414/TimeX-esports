@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Leaderboard = ({ teams }) => {
+const Leaderboard = () => {
     return (
         <div className="flex flex-col items-center justify-center gap-10 px-5 py-20">
             <h1 className="heading">Overall Leaderboard</h1>

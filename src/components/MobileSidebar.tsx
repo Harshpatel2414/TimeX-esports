@@ -1,13 +1,12 @@
 'use client'
-import React, { useContext } from 'react'
 import { FaUser } from 'react-icons/fa'
 import Navlinks from './Navlinks'
 import Link from 'next/link'
-import { AuthContext } from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 import { FaRightFromBracket } from 'react-icons/fa6'
 
-const MobileSidebar = (props) => {
-    let { currentUser, setCurrentUser } = useContext(AuthContext)
+const MobileSidebar = (props: any) => {
+    let { currentUser, setCurrentUser } = useAuth()
     return (
         <div className='border-r-2 border-container z-20 fixed bg-zinc-900 gap-4 flex top-0 left-0 h-full w-[300px] flex-col md:hidden p-5 '>
             <div className='flex items-center justify-between w-full border-b-2 border-zinc-700 pb-2'>

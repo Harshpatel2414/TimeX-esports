@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HistoryCard = ({ id, imageUrl, match, matchtype, winamount, lossamount, date, result }) => {
+const HistoryCard = ({ id, imageUrl, match, matchtype, winamount, lossamount, date, result }: historyCardProps) => {
     return (
         <div className='w-full bg-zinc-900 rounded-lg flex items-center relative overflow-hidden p-2 gap-4'>
             <div>
