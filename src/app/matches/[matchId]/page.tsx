@@ -3,9 +3,7 @@ import TeamCard from '@/components/TeamCard'
 import { matchInfoCards, teams } from '@/data'
 import Link from 'next/link'
 import React from 'react'
-import { BiDollarCircle } from 'react-icons/bi'
-import { FaMap, FaUsers, FaWallet } from 'react-icons/fa'
-import { FaCircleArrowRight } from 'react-icons/fa6'
+import { FaUsers, } from 'react-icons/fa'
 
 const MatchDetails = ({ params }: any) => {
   let id = params.matchId

@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
 import SectionHead from "@/components/SectionHead";
-import RegistrationForm from '@/components/RegistrationForm'
-import { AuthContextProvider } from "@/context/AuthContext";
 
 export default function Home() {
 
@@ -133,7 +131,7 @@ export default function Home() {
           <img src="/images/format_artwok.png" alt="" className="w-[300px] drop-shadow-xl" />
         </div>
       </div>
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
 
     </>
   );

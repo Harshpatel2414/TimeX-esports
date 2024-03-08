@@ -44,5 +44,5 @@ type UserType = {
 type TeamCardProps = {
     name: string,
     imageUrl: string,
-    slot: string
+    slot: number
 }
