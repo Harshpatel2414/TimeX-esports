@@ -10,7 +10,7 @@ import User from './User';
 
 const Navbar: React.FC = () => {
     const [menu, setMenu] = useState(false)
-    const { currentUser, setCurrentUser } = useAuth()
+    const { currentUser } = useAuth()
     return (
         <nav className='flex items-center px-5 lg:px-20 h-20 justify-between bg-zinc-900 text-lg text-gray-300'>
             <Logo />

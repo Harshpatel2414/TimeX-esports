@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ESports - Nandurbar",
+  title: "TIM3-X - ESports",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
         <AuthContextProvider>
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
         </AuthContextProvider>
       </body>
     </html>

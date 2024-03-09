@@ -9,6 +9,13 @@ export const navlinks = [
   { id: nanoid(), href: '/about', text: 'About' },
   { id: nanoid(), href: '/contact', text: 'Contact' },
 ];
+export const navlinksMob = [
+  { id: nanoid(), href: '/', text: 'Home' },
+  { id: nanoid(), href: '/user', text: 'Profile' },
+  { id: nanoid(), href: '/matches', text: 'Matches' },
+  { id: nanoid(), href: '/about', text: 'About' },
+  { id: nanoid(), href: '/contact', text: 'Contact' },
+];
 
 export const teams = [
   {
@@ -85,15 +92,15 @@ export const matchInfoCards = [
   },
   {
     id: nanoid(),
-    icon: <FaWallet className='w-10 h-10 mb-5 text-container' />,
-    title: 'Entry Fee',
-    subtitle: '50',
-  },
-  {
-    id: nanoid(),
     icon: <FaUsers className='w-10 h-10 mb-5 text-container' />,
     title: 'Mode',
     subtitle: 'squad',
+  },
+  {
+    id: nanoid(),
+    icon: <FaWallet className='w-10 h-10 mb-5 text-container' />,
+    title: 'Entry Fee',
+    subtitle: '50',
   },
   {
     id: nanoid(),

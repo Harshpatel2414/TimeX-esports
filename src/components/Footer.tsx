@@ -9,7 +9,7 @@ const Footer = () => {
             <div className='grid md:grid-cols-2 lg:grid-cols-4 p-5 gap-10 py-10 border-t-2 border-container'>
                 <div className='flex flex-col justify-around gap-4'>
                     <div>
-                        <Image width={96} height={40} quality={100} className='w-24' src="/images/logo.png" alt="" />
+                        <Image width={96} height={40} quality={100} src="/images/logo.png" alt="" />
                     </div>
                     <p className='text-sm text-zinc-600'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, maxime Lorem ipsum dolor sit amet</p>
                     <span className='text-md'>Follow Us</span>

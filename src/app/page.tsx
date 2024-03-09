@@ -129,8 +129,6 @@ export default function Home() {
           <Image width={300} height={300} quality={100} src="/images/format_artwok.png" alt="" className="w-[300px] drop-shadow-xl" />
         </div>
       </div>
-      {/* <RegistrationForm /> */}
-
     </>
   );
 }

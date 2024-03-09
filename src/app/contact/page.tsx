@@ -4,7 +4,7 @@ const Contact = () => {
     return (
         <div className='flex justify-center items-center w-full flex-col py-20 gap-10 px-5'>
             <div>
-                <h1>Contact Us</h1>
+                <h1 className='text-2xl lg:text-5xl text-center font-bold tracking-widest'>Contact Us</h1>
             </div>
             <div className='flex flex-col md:flex-row gap-10  lg:w-3/4 items-center'>
                 <div className='flex-1 flex flex-col gap-5'>
