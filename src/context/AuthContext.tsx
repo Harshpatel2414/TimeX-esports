@@ -38,7 +38,20 @@ export const AuthContextProvider = ({
         });
         setLoading(false);
     }, []);
-
+    // handle errors
+    const handleError = (error: firebase.auth.Error): any => {
+        switch (error.code) {
+            case 'auth/invalid-email':
+                return toast.error("Invalid email")
+            case 'auth/user-not-found':
+                return toast.error("User not exist")
+            case 'auth/wrong-password':
+                return toast.error("Invalid password")
+            // Add more cases as needed for other error types
+            default:
+                return toast.error(error.message);
+        }
+    };
     // Sign up the user
     const signUpWithEmail = async (e) => {
         e.preventDefault();
@@ -62,15 +75,17 @@ export const AuthContextProvider = ({
                             email: email,
                             photoURL: downloadURL,
                         });
+                        toast.success('Sign up Successfully!')
                         router.push('/')
                     }
                     catch (error) {
                         console.log(error);
+                        handleError(error)
                     }
                 });
             });
         } catch (error) {
-            console.log(error.message);
+            handleError(error)
         }
     };
 
@@ -84,13 +99,14 @@ export const AuthContextProvider = ({
             toast.success('Login Successfully!')
             router.push('/');
         } catch (error) {
-            console.log(error.message);
+            handleError(error)
         }
     };
 
     // Logout the user
     const logOut = async () => {
-        return await signOut(auth);
+        await signOut(auth);
+        toast.success('Logout Successfully!')
     };
 
     // Wrap the children with the context provider
