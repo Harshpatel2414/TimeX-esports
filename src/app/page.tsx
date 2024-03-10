@@ -20,7 +20,7 @@ export default function Home() {
               <p className="text-md mb-2 text-container">Everyday</p>
               <h1 className="uppercase text-left text-3xl md:text-4xl lg:text-6xl tracking-wider font-bold">Ultimate <span className="text-container">bgmi</span> matches</h1>
             </div>
-            <Link className="py-2 px-5 rounded-lg hover:bg-red-500 text-lg text-zinc-900 bg-container w-fit" href="/register">Register</Link>
+            <Link className="py-2 px-5 rounded-lg hover:bg-red-500 text-lg text-zinc-900 bg-container w-fit" href="/matches">Register</Link>
           </div>
           <div className="relative">
             <Image width={320} height={320} quality={100} className="drop-shadow-lg w-80 md:w-96 object-cover" src="/images/char1.png" alt="" />

@@ -1,16 +1,25 @@
+"use client"
 import SectionHead from '@/components/SectionHead'
 import TeamCard from '@/components/TeamCard'
+import { useAuth } from '@/context/AuthContext'
 import { matchInfoCards, teams } from '@/data'
 import Image from 'next/image'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { FaUsers } from 'react-icons/fa'
 
 const MatchDetails = ({ params }: any) => {
+  let { currentUser } = useAuth()
+  if (!currentUser) {
+    toast.error('Login for registration');
+    redirect('/login');
+  }
   let id = params.matchId
   return (
     <div className='px-5 flex items-center flex-col gap-10 py-20'>
       <SectionHead title={`Match ${id} - Details`} />
-      <div className='flex w-full flex-col md:flex-row md:h-[350px] lg:w-3/4 rounded-2xl overflow-hidden bg-zinc-900'>
+      <div className='flex w-full flex-col md:flex-row md:h-[350px] lg:w-3/4 rounded-2xl overflow-hidden bg-zinc-900 text-zinc-200'>
         <div className='flex-2 w-full lg:max-w-[600px] '>
           <Image width={600} height={300} quality={100} className='h-full w-full object-center object-cover overflow-hidden ' src="/images/bg2.jpg" alt="" />
         </div>
