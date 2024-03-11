@@ -24,6 +24,10 @@ body {
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -51,8 +55,9 @@ body {
 }
 
 .btn-primary {
-  @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-center text-sm px-5 py-2.5 me-2 mb-2 dark:bg-container dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+  @apply text-white bg-container hover:bg-blue-800 font-medium rounded-lg text-center hover:text-white text-sm px-5 py-2 mb-2
 }
+
 .btn-secondary {
-  @apply text-container border border-container py-2 text-center px-4 rounded-lg hover:bg-container hover:text-white 
+  @apply text-container border border-container py-2 text-center px-4 rounded-lg hover:bg-container hover:text-white
 }

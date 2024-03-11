@@ -11,7 +11,6 @@ export const navlinks = [
 ];
 export const navlinksMob = [
   { id: nanoid(), href: '/', text: 'Home' },
-  { id: nanoid(), href: '/user', text: 'Profile' },
   { id: nanoid(), href: '/matches', text: 'Matches' },
   { id: nanoid(), href: '/about', text: 'About' },
   { id: nanoid(), href: '/contact', text: 'Contact' },
@@ -137,5 +136,32 @@ export const userHistory = [
     date: '01 March',
     result: 'loss',
     lossamount: '-40'
+  },
+];
+
+export const cards = [
+  {
+    id: 1,
+    title: "Total Users",
+    number: 10.928,
+    change: 12,
+  },
+  {
+    id: 2,
+    title: "Active Users",
+    number: 8.236,
+    change: 6,
+  },
+  {
+    id: 3,
+    title: "Stock",
+    number: 8.236,
+    change: -2,
+  },
+  {
+    id: 4,
+    title: "Revenue",
+    number: 6.642,
+    change: 18,
   },
 ];
