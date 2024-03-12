@@ -1,3 +1,4 @@
+"use client"
 import { userHistory } from '@/data'
 import HistoryCard from '@/components/user/HistoryCard'
 import Image from 'next/image'
