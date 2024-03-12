@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { FaDiceD6, FaEnvelope, FaUser } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 
-const Dropdown = ({ displayName, email }) => {
+const Dropdown = ({ displayName, email }: any) => {
     let { logOut } = useAuth();
 
     return (
@@ -12,7 +12,7 @@ const Dropdown = ({ displayName, email }) => {
                 <span className=' capitalize'>hii, {displayName}</span>
                 <span className='flex gap-4 items-center'><FaEnvelope />{email}</span>
                 <Link href={'/user'} className='underline flex items-center gap-4'><FaUser />Profile</Link>
-                {email === process.env.User_Email && <Link href={'/admin/dashboard'} className='underline flex items-center gap-4'><FaDiceD6 />Dashboard</Link>}
+                {email === process.env.NEXT_PUBLIC_ADMIN_EMAIL && <Link href={'/admin/dashboard'} className='underline flex items-center gap-4'><FaDiceD6 />Dashboard</Link>}
                 <span className='flex gap-4 items-center'><FaGear />Settings</span>
             </div>
             <button onClick={logOut} className='btn-primary'>Logout</button>

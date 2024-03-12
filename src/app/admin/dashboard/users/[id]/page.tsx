@@ -1,6 +1,4 @@
-import React from 'react'
-
-const UserDetails = ({params}) => {
+const UserDetails = ({ params }: any) => {
   return (
     <div>
       user {params.id}

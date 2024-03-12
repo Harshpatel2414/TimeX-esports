@@ -63,3 +63,11 @@ type FieldTypes = {
     confirmPassword?: string;
     agreement: boolean
 }
+
+// dashboard user card
+type DashboardUserCardProps = {
+    avatar?: string;
+    name: string;
+    email: string;
+    matches: Array[string];
+}
