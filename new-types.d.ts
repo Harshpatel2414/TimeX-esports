@@ -1,3 +1,5 @@
+import { RcFile } from "antd/es/upload"
+
 // for history card
 type historyCardProps = {
     id?: string,
@@ -45,4 +47,15 @@ type TeamCardProps = {
     name: string,
     imageUrl: string,
     slot: number
+}
+
+// Field type
+type FieldTypes = {
+    profilePicture?: RcFile[],
+    username?: string;
+    email?: string;
+    password?: string;
+    fullName?: string;
+    confirmPassword?: string;
+    agreement: boolean
 }

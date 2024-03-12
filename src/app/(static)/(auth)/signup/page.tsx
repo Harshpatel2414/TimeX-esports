@@ -1,31 +1,35 @@
 "use client"
 import { useAuth } from '@/context/AuthContext'
+import { PlusOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, Upload } from 'antd'
+import { UploadChangeParam } from 'antd/es/upload'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { FaEye, FaGoogle } from 'react-icons/fa'
+import { FaGoogle } from 'react-icons/fa'
+import { FieldTypes } from '../../../../../new-types'
 
 const Signup = () => {
   const { signUpWithEmail } = useAuth()
   const [passview, setPassview] = useState('password')
-  const previewImage = (event) => {
-    const input = event.target;
-    const image = document.getElementById('preview');
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (e) => {
-        image.src = e.target.result;
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  let passViewer = () => {
-    if (passview == 'text') {
-      setPassview('password')
+  const [imageSelected, setImageSelected] = useState(false);
+
+  const handleChange = (info: UploadChangeParam) => {
+    const fileList = info.fileList.slice(-1);
+
+    if (fileList.length > 0) {
+      setImageSelected(true);
     } else {
-      setPassview('text')
+      setImageSelected(false);
     }
-  }
+
+    // Additional checks or logic if needed
+  };
+
+  const handleSubmit = (values: FieldTypes) => {
+    // Implement your form submission logic here
+    console.log(values);
+  };
 
   return (
     <div className="flex px-5 gap-0 flex-col lg:flex-row-reverse items-center lg:justify-around w-full py-20">
@@ -37,20 +41,98 @@ const Signup = () => {
       <div className='flex flex-col'>
         <div className="flex flex-col gap-4  p-5 bg-zinc-900 rounded-lg items-center">
           <span className=" font-bold text-xl mb-2">Register</span>
-          <form onSubmit={signUpWithEmail} className='flex flex-col gap-3 w-80 items-center'>
-            <label htmlFor="file">
-              <Image width={64} height={64} className='w-16 h-16 rounded-full border-2 border-container object-cover object-center' src="" id="preview" alt="" accept="image/*" />
-              <span className='text-container'>Profile+</span>
-            </label>
-            <input className='hidden' type='file' name='img' id="file" onChange={(e) => previewImage(e)} />
-            <input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' type="text" name='username' placeholder='username' required />
-            <input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' type="email" name='email' placeholder='email' required />
-            <div className='flex items-center gap-2 bg-white w-full border-b-2 border-container'>
-              <input className='p-2 w-full outline-none text-zinc-800 ' type={passview} name='password' placeholder='password' required />
-              <FaEye onClick={passViewer} className='w-6 h-full text-zinc-700 mr-2' />
-            </div>
-            <button className='btn-secondary w-full'>Sign up</button>
-          </form>
+
+          {/* form section */}
+
+          <Form onFinish={(values) => {
+            console.log({ values })
+          }}>
+
+            <Form.Item<FieldTypes>
+              className='flex justify-center'
+              name={"profilePicture"}
+              valuePropName='fileList'
+              getValueFromEvent={(e) => e?.fileList} >
+              <Upload
+                listType='picture-circle'
+                onChange={handleChange} maxCount={1}
+              >
+                {!imageSelected &&
+                  <span className='text-white'>
+                    <PlusOutlined className='mx-1' />Upload
+                  </span>
+                }
+              </Upload>
+            </Form.Item>
+
+            <Form.Item<FieldTypes>
+              name={"username"}
+              rules={[{
+                required: true, message: "Please enter your username!"
+              }]}>
+              <Input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="Username" />
+            </Form.Item>
+            <Form.Item<FieldTypes>
+              name={"email"}
+              rules={[{
+                required: true,
+                type: 'email', message: 'Please enter a valid email!'
+              }]}>
+              <Input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="example@xyz.com" />
+            </Form.Item>
+
+            <Form.Item<FieldTypes>
+              name={"password"}
+              rules={[{
+                required: true, message: "Please input your password!"
+              }]}>
+              <Input.Password className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="Password" />
+            </Form.Item>
+
+            <Form.Item
+              name="confirm"
+              dependencies={['password']}
+              hasFeedback
+              rules={[
+                {
+                  required: true,
+                  message: 'Please confirm your password!',
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(new Error('The new password that you entered do not match!'));
+                  },
+                }),
+              ]}
+            >
+              <Input.Password className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder='Confirm Password' />
+            </Form.Item>
+
+            <Form.Item<FieldTypes>
+              name="agreement"
+              valuePropName="checked"
+              rules={[
+                {
+                  required: true,
+                  validator: (_, value) =>
+                    value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                }
+              ]}
+            >
+              <Checkbox>
+                <span className='text-white'>
+                  I have read the <a className='text-blue-500' href="#">agreement*</a>
+                </span>
+              </Checkbox>
+            </Form.Item>
+
+            <Form.Item className='flex justify-center'>
+              <Button className='mx-auto' htmlType='submit'>Sign Up</Button>
+            </Form.Item>
+          </Form>
         </div>
         <div className="text-center flex flex-col items-center gap-2 mt-4">
           <span>or</span>
