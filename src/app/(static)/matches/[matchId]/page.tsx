@@ -12,8 +12,18 @@ import { FaUsers } from 'react-icons/fa'
 const MatchDetails = ({ params }: any) => {
   let { currentUser } = useAuth()
   if (!currentUser) {
-    toast.error('Login for registration');
-    redirect('/login');
+    toast((t) => (
+      <span>
+        For register match please
+        <button className='btn-primary ml-2' onClick={() => toast.dismiss(t.id)}>
+          <Link href={'/login'}>Login</Link>
+        </button>
+        <button className='btn-secondary ml-2' onClick={() => toast.dismiss(t.id)}>
+          Close
+        </button>
+      </span>
+    ));
+    redirect('/matches');
   }
   let id = params.matchId
   return (

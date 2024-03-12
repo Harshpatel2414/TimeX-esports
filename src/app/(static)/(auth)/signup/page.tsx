@@ -35,19 +35,20 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex px-5 gap-0 flex-col lg:flex-row-reverse items-center lg:justify-around w-full py-20">
+    <div className="flex px-5 gap-0 flex-col lg:flex-row-reverse items-center lg:justify-around w-full py-10 md:py-20">
       <div className=" lg:w-1/3 drop-shadow-xl z-10">
         <h1 className="text-3xl lg:text-4xl drop-shadow-xl shadow-container font-bold tracking-wider">Lets get started</h1>
         <p className="texte-sm text-zinc-700">Sign up to get more information about tournaments</p>
-        <Image width={384} height={384} quality={100} className="-mb-14 md:my-0 w-96 relative drop-shadow-xl shadow-black" src="/images/login.png" alt="" />
+        <Image width={384} height={384} quality={100} className="hidden lg:block -mb-14 md:my-0 w-96 relative drop-shadow-xl shadow-black" src="/images/login.png" alt="" />
+        <Image width={384} height={384} quality={100} className=" -mb-[40%] -ml-24 z-10 lg:my-0 w-96 relative drop-shadow-xl shadow-black lg:hidden" src="/images/register.png" alt="" />
       </div>
-      <div className='flex flex-col'>
-        <div className="flex flex-col gap-4  p-5 bg-zinc-900 rounded-lg items-center">
+      <div className='flex flex-col w-full md:w-[350px]'>
+        <div className="flex flex-col gap-4 w-full p-5 bg-zinc-900 rounded-lg items-center">
           <span className=" font-bold text-xl mb-2">Register</span>
 
           {/* form section */}
 
-          <Form className='w-full md:w-[350px]' onFinish={values => handleSubmit(values)}>
+          <Form className='w-full ' onFinish={values => handleSubmit(values)}>
             <Form.Item<FieldTypes>
               className='flex justify-center'
               name={"profilePicture"}
