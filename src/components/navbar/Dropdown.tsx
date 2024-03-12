@@ -12,7 +12,7 @@ const Dropdown = ({ displayName, email }: dashProp) => {
     let { logOut } = useAuth();
 
     return (
-        <div className='hidden md:flex flex-col gap-3 absolute top-16 right-0 bg-zinc-900 rounded-lg p-4 z-10 text-sm w-48'>
+        <div className='hidden md:flex flex-col gap-3 absolute top-16 right-0 bg-zinc-900 rounded-lg p-4 z-10 text-sm w-fit min-w-48'>
             <div className='flex flex-col gap-2 border-b-2 pb-2 border-zinc-600'>
                 <span className=' capitalize'>hii, {displayName}</span>
                 <span className='flex gap-4 items-center'><FaEnvelope />{email}</span>

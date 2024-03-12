@@ -11,7 +11,6 @@ import { FieldTypes } from '../../../../../new-types'
 
 const Signup = () => {
   const { signUpWithEmail } = useAuth()
-  const [passview, setPassview] = useState('password')
   const [imageSelected, setImageSelected] = useState(false);
 
   const handleChange = (info: UploadChangeParam) => {
@@ -22,13 +21,17 @@ const Signup = () => {
     } else {
       setImageSelected(false);
     }
+  };
 
-    // Additional checks or logic if needed
+  const normFile = (e: any) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
   };
 
   const handleSubmit = (values: FieldTypes) => {
-    // Implement your form submission logic here
-    console.log(values);
+    signUpWithEmail(values);
   };
 
   return (
@@ -44,15 +47,12 @@ const Signup = () => {
 
           {/* form section */}
 
-          <Form onFinish={(values) => {
-            console.log({ values })
-          }}>
-
+          <Form className='w-full md:w-[350px]' onFinish={values => handleSubmit(values)}>
             <Form.Item<FieldTypes>
               className='flex justify-center'
               name={"profilePicture"}
               valuePropName='fileList'
-              getValueFromEvent={(e) => e?.fileList} >
+              getValueFromEvent={normFile} >
               <Upload
                 listType='picture-circle'
                 onChange={handleChange} maxCount={1}
@@ -70,7 +70,7 @@ const Signup = () => {
               rules={[{
                 required: true, message: "Please enter your username!"
               }]}>
-              <Input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="Username" />
+              <Input className='p-2 w-full outline-none text-zinc-800' placeholder="Username" />
             </Form.Item>
             <Form.Item<FieldTypes>
               name={"email"}
@@ -78,7 +78,7 @@ const Signup = () => {
                 required: true,
                 type: 'email', message: 'Please enter a valid email!'
               }]}>
-              <Input className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="example@xyz.com" />
+              <Input className='p-2 w-full outline-none text-zinc-800' placeholder="example@xyz.com" />
             </Form.Item>
 
             <Form.Item<FieldTypes>
@@ -86,7 +86,7 @@ const Signup = () => {
               rules={[{
                 required: true, message: "Please input your password!"
               }]}>
-              <Input.Password className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder="Password" />
+              <Input.Password className='p-2 w-full outline-none text-zinc-800' placeholder="Password" />
             </Form.Item>
 
             <Form.Item
@@ -108,7 +108,7 @@ const Signup = () => {
                 }),
               ]}
             >
-              <Input.Password className='p-2 w-full outline-none text-zinc-800 border-b-2 border-container' placeholder='Confirm Password' />
+              <Input.Password className='p-2 w-full outline-none text-zinc-800' placeholder='Confirm Password' />
             </Form.Item>
 
             <Form.Item<FieldTypes>
@@ -130,7 +130,7 @@ const Signup = () => {
             </Form.Item>
 
             <Form.Item className='flex justify-center'>
-              <Button className='mx-auto' htmlType='submit'>Sign Up</Button>
+              <Button className='mx-auto btn-primary h-fit border-none' htmlType='submit'>Sign Up</Button>
             </Form.Item>
           </Form>
         </div>

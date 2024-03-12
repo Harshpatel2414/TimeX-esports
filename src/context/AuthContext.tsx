@@ -55,28 +55,14 @@ export const AuthContextProvider = ({
         }
     };
     // Sign up the user
-    const signUpWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const target = e.target as typeof e.target & {
-            elements: {
-                0: HTMLInputElement;
-                1: HTMLInputElement;
-                2: HTMLInputElement;
-                3: HTMLInputElement;
-            };
-        };
-        const imageInput = target.elements[0] as HTMLInputElement;
-        const image = imageInput.files ? imageInput.files[0] : null;
-        if (!image) {
-            return toast.error("Please select an image");
-        }
-        const username = target.elements[1].value;
-        const email = target.elements[2].value;
-        const password = target.elements[3].value;
+    const signUpWithEmail = async (values: any) => {
+        let { agreement, confirm, email, password, profilePicture, username } = values;
+        let imageUrl = profilePicture[0].originFileObj;
+
         try {
             const res = await createUserWithEmailAndPassword(auth, email, password);
-            const storageRef = ref(storage, `profile${Timestamp.now().nanoseconds}`);
-            await uploadBytesResumable(storageRef, image).then(() => {
+            const storageRef = ref(storage, `profile${username}${Timestamp.now().nanoseconds}`);
+            await uploadBytesResumable(storageRef, imageUrl).then(() => {
                 getDownloadURL(storageRef).then(async (downloadURL) => {
                     try {
                         await updateProfile(res.user, {
@@ -88,23 +74,23 @@ export const AuthContextProvider = ({
                             userName: username,
                             email: email,
                             photoURL: downloadURL,
+                            agreement: agreement,
                         });
                         toast.success('Sign up Successfully!')
                         router.push('/')
                     }
-                    catch (error:any) {
-                        console.log(error);
+                    catch (error: any) {
                         handleError(error)
                     }
                 });
             });
-        } catch (error:any) {
+        } catch (error: any) {
             handleError(error)
         }
     };
 
     // Login the user
-    const logIn = async (e:React.FormEvent<HTMLFormElement>) => {
+    const logIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as typeof e.target & {
             elements: {
@@ -118,7 +104,7 @@ export const AuthContextProvider = ({
             await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login Successfully!')
             router.push('/');
-        } catch (error:any) {
+        } catch (error: any) {
             handleError(error)
         }
     };
