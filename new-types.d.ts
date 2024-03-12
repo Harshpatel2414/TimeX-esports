@@ -63,6 +63,7 @@ type FieldTypes = {
     confirmPassword?: string;
     agreement: boolean
 }
+<<<<<<< HEAD
 // dashboard card
 type dashCardProps = {
     id?: number,
@@ -77,3 +78,13 @@ type dashNavitemProps = {
     hidden: boolean,
     path: string,
   }
+=======
+
+// dashboard user card
+type DashboardUserCardProps = {
+    avatar?: string;
+    name: string;
+    email: string;
+    matches: Array[string];
+}
+>>>>>>> 3ade6b3befa324d2f7472b5cd207b243324cadce

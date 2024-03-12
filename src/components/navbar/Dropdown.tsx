@@ -2,11 +2,16 @@ import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
 import { FaDiceD6, FaEnvelope, FaUser } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
+<<<<<<< HEAD
 type dashProp = {
     displayName: string,
     email: string,
 }
 const Dropdown = ({ displayName, email }:dashProp) => {
+=======
+
+const Dropdown = ({ displayName, email }: any) => {
+>>>>>>> 3ade6b3befa324d2f7472b5cd207b243324cadce
     let { logOut } = useAuth();
 
     return (

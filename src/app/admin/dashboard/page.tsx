@@ -3,12 +3,16 @@ import { useAuth } from '@/context/AuthContext';
 import { redirect } from 'next/navigation';
 import { cards } from '@/data';
 import Card from '@/components/dashboard/card/Card';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
   const { currentUser } = useAuth()
-  if (!currentUser) {
-    redirect('/');
-  }
+
+  useEffect(() => {
+    if (!currentUser) {
+      redirect('/');
+    }
+  })
 
   return (
     <div className='flex flex-col items-center md:flex-row w-full h-dvh'>
