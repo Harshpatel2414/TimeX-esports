@@ -1,3 +1,5 @@
+import { sectionProps } from "../../new-types"
+
 const SectionHead = ({ title, para }: sectionProps) => {
   return (
     <div className="text-center uppercase tracking-wider pb-5">
