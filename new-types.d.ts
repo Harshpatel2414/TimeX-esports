@@ -1,5 +1,9 @@
 import { RcFile } from "antd/es/upload"
 
+// react child
+type ReactChildren = {
+    children: React.ReactNode;
+}
 // for history card
 type historyCardProps = {
     id?: string,
