@@ -2,8 +2,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { BiSolidChevronRight } from "react-icons/bi";
+import { dashNavitemProps } from "../../../../new-types";
 
-export function ListItem({ Icon, title, hidden, isActive, path }) {
+export function ListItem({ Icon, title, hidden, isActive, path }:dashNavitemProps) {
   const pathname = usePathname()
   return (
     <Link

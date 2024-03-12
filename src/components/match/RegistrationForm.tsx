@@ -1,41 +1,54 @@
 "use client"
-
 import { useState } from 'react';
 
-const TeamRegistrationForm = () => {
-    const [teamLogo, setTeamLogo] = useState('');
-    const [teamName, setTeamName] = useState('');
-    const [leaderName, setLeaderName] = useState('');
-    const [leaderEmail, setLeaderEmail] = useState('');
-    const [leaderMobile, setLeaderMobile] = useState('');
-    const [playerDetails, setPlayerDetails] = useState([{ name: '', email: '' }]);
+interface Player {
+    name: string;
+    email: string;
+}
 
-    const handleChange = (index, e) => {
+const TeamRegistrationForm = () => {
+    const [teamLogo, setTeamLogo] = useState<File | string>('');
+    const [teamName, setTeamName] = useState<string>('');
+    const [leaderName, setLeaderName] = useState<string>('');
+    const [leaderEmail, setLeaderEmail] = useState<string>('');
+    const [leaderMobile, setLeaderMobile] = useState<string>('');
+    const [playerDetails, setPlayerDetails] = useState<Player[]>([{ name: '', email: '' }]);
+
+    const handleChange = (index:number, e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         const newPlayers = [...playerDetails];
-        newPlayers[index][name] = value;
+        newPlayers[index] = {
+            ...newPlayers[index],
+            [name]: value,
+        };
         setPlayerDetails(newPlayers);
     };
-
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setTeamLogo(e.target.files[0]);
+        }
+    };
     const handleAdd = () => {
         setPlayerDetails([...playerDetails, { name: '', email: '' }]);
     };
 
-    const handleRemove = (index) => {
+    const handleRemove = (index: number) => {
         const newRegistrations = [...playerDetails];
         newRegistrations.splice(index, 1);
         setPlayerDetails(newRegistrations);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log({players :playerDetails,team:{
-            teamLogo,
-            teamName,
-            leaderName,
-            leaderEmail,
-            leaderMobile
-        }});
+        console.log({
+            players: playerDetails, team: {
+                teamLogo,
+                teamName,
+                leaderName,
+                leaderEmail,
+                leaderMobile
+            }
+        });
 
         // Handle form submission here
     };
@@ -50,7 +63,7 @@ const TeamRegistrationForm = () => {
                 <input
                     type="file"
                     id="teamLogo"
-                    onChange={(e) => setTeamLogo(e.target.files[0])}
+                    onChange={handleImageChange}
                     className="p-2 mb-2 border border-container bg-none rounded w-full outline-none"
                 />
                 <label htmlFor="teamName" className="block mb-2">
@@ -60,7 +73,7 @@ const TeamRegistrationForm = () => {
                     type="text"
                     id="teamName"
                     value={teamName}
-                    onChange={(e) => setTeamName(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTeamName(e.target.value)}
                     className="p-2 mb-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                     required
                 />
@@ -71,7 +84,7 @@ const TeamRegistrationForm = () => {
                     type="text"
                     id="leaderName"
                     value={leaderName}
-                    onChange={(e) => setLeaderName(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLeaderName(e.target.value)}
                     className="p-2 mb-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                     required
                 />
@@ -82,7 +95,7 @@ const TeamRegistrationForm = () => {
                     type="email"
                     id="leaderEmail"
                     value={leaderEmail}
-                    onChange={(e) => setLeaderEmail(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLeaderEmail(e.target.value)}
                     className="p-2 mb-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                     required
                 />
@@ -93,7 +106,7 @@ const TeamRegistrationForm = () => {
                     type="tel"
                     id="leaderMobile"
                     value={leaderMobile}
-                    onChange={(e) => setLeaderMobile(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLeaderMobile(e.target.value)}
                     className="p-2 mb-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                     required
                 />
@@ -108,7 +121,7 @@ const TeamRegistrationForm = () => {
                             type="text"
                             name="name"
                             value={player.name}
-                            onChange={(e) => handleChange(index, e)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(index, e)}
                             className="p-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                             required
                         />
@@ -117,7 +130,7 @@ const TeamRegistrationForm = () => {
                             type="email"
                             name="email"
                             value={player.email}
-                            onChange={(e) => handleChange(index, e)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(index, e)}
                             className="p-2 bg-zinc-800 outline-none rounded w-full border-b border-container"
                             required
                         />

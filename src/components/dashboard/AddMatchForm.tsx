@@ -2,17 +2,21 @@
 import React, { useState } from 'react';
 
 const MatchForm = () => {
-    const [img, setImg] = useState('');
-    const [title, setTitle] = useState('');
-    const [mode, setMode] = useState('');
-    const [entryFee, setEntryFee] = useState('');
-    const [date, setDate] = useState('');
+    const [img, setImg] = useState<File | string>('');
+    const [title, setTitle] = useState<string>('');
+    const [mode, setMode] = useState<string>('');
+    const [entryFee, setEntryFee] = useState<number | string>('');
+    const [date, setDate] = useState<string>('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:React.FormEvent) => {
         e.preventDefault();
         console.log({ img, title, mode, entryFee, date });
     };
-
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setImg(e.target.files[0]);
+        }
+    };
     return (
         <form onSubmit={handleSubmit} className="w-full md:w-[350px] p-5 bg-indigo-950 rounded-lg">
             <div className="mb-2">
@@ -21,7 +25,7 @@ const MatchForm = () => {
                     type="text"
                     name="title"
                     value={title}
-                    onChange={e => setTitle(e.target.value)}
+                    onChange={(e:React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg border-b-2 bg-zinc-300 text-indigo-950 border-indigo-300 outline-none"
                     placeholder="Enter Title"
                     required
@@ -32,7 +36,7 @@ const MatchForm = () => {
                 <input
                     type="file"
                     name="image"
-                    onChange={e => setImg(e.target.files[0])}
+                    onChange={handleImageChange}
                     className="w-full px-3 py-2 rounded-lg border-b-2 bg-zinc-300 text-indigo-950 border-indigo-300 outline-none"
                     placeholder="Enter Image URL"
                     required
@@ -43,7 +47,7 @@ const MatchForm = () => {
                 <select
                     name="type"
                     value={mode}
-                    onChange={e => setMode(e.target.value)}
+                    onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setMode(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg border-b-2 bg-zinc-300 text-indigo-950 border-indigo-300 outline-none"
                     required
                 >
@@ -58,7 +62,7 @@ const MatchForm = () => {
                     type="number"
                     name="entryFee"
                     value={entryFee}
-                    onChange={e => setEntryFee(e.target.value)}
+                    onChange={(e:React.ChangeEvent<HTMLInputElement>) => setEntryFee(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg border-b-2 bg-zinc-300 text-indigo-950 border-indigo-300 outline-none"
                     placeholder="Enter Entry Fee"
                     required
@@ -70,7 +74,7 @@ const MatchForm = () => {
                     type="date"
                     name="date"
                     value={date}
-                    onChange={e => setDate(e.target.value)}
+                    onChange={(e:React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg border-b-2 bg-zinc-300 text-indigo-950 border-indigo-300 outline-none"
                     required
                 />

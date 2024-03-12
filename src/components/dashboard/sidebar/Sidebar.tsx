@@ -6,57 +6,48 @@ import { RiWallet3Line } from "react-icons/ri";
 import { FaPersonRifle, FaRightFromBracket } from "react-icons/fa6";
 import { useAuth } from "@/context/AuthContext";
 
-const style = {
-  fontSize: "30px",
-};
-
-const data = [
-  {
-    title: "Dashboard",
-    Icon: <FaDiceD6 style={style} />,
-    style: { style },
-    isActive: true,
-    hidden: true,
-    path: "/admin/dashboard",
-  },
-  {
-    title: "Matches",
-    Icon: <FaPersonRifle style={style} />,
-    style: { style },
-    isActive: true,
-    hidden: true,
-    path: "/admin/dashboard/matches",
-  },
-  {
-    title: "Winners",
-    Icon: <FaTrophy style={style} />,
-    style: { style },
-    isActive: true,
-    hidden: true,
-    path: "/admin/dashboard/winners",
-  },
-  {
-    title: "Income",
-    Icon: <RiWallet3Line style={style} />,
-    style: { style },
-    isActive: true,
-    hidden: true,
-    path: "/admin/dashboard/income",
-  },
-  {
-    title: "Users",
-    Icon: <FaUsers style={style} />,
-    style: { style },
-    isActive: true,
-    hidden: true,
-    path: "/admin/dashboard/users",
-  },
-];
+const data= [
+    {
+      title: "Dashboard",
+      Icon: <FaDiceD6 className="h-8 w-8" />,
+      isActive: true,
+      hidden: true,
+      path: "/admin/dashboard",
+    },
+    {
+      title: "Matches",
+      Icon: <FaPersonRifle className="h-8 w-8" />,
+      isActive: true,
+      hidden: true,
+      path: "/admin/dashboard/matches",
+    },
+    {
+      title: "Winners",
+      Icon: <FaTrophy className="h-8 w-8" />,
+      isActive: true,
+      hidden: true,
+      path: "/admin/dashboard/winners",
+    },
+    {
+      title: "Income",
+      Icon: <RiWallet3Line className="h-8 w-8" />,
+      isActive: true,
+      hidden: true,
+      path: "/admin/dashboard/income",
+    },
+    {
+      title: "Users",
+      Icon: <FaUsers className="h-8 w-8" />,
+      isActive: true,
+      hidden: true,
+      path: "/admin/dashboard/users",
+    },
+  ];
 
 export function Sidebar() {
   const [isHidden, setIsHidden] = useState(true);
   let [activeTab, setActiveTab] = useState(0);
-  let {logOut} = useAuth();
+  let { logOut } = useAuth();
 
   const hideDashboard = () => {
     isHidden ? setIsHidden(false) : setIsHidden(true);
@@ -81,7 +72,7 @@ export function Sidebar() {
         ))}
       </div>
       <div className="flex h-fit w-full items-center justify-center gap-4 p-2 bg-indigo-900 rounded-md">
-        <FaRightFromBracket className="w-6 h-6"/>
+        <FaRightFromBracket className="w-6 h-6" />
         {!isHidden && <button onClick={logOut} className='w-full text-sm text-left underline font-semibold tracking-wide'>Logout</button>}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { historyCardProps } from '../../../new-types'
 
 const HistoryCard = ({ id, imageUrl, match, matchtype, winamount, lossamount, date, result }: historyCardProps) => {
     return (

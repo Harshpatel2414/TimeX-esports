@@ -16,7 +16,7 @@ const MobileSidebar = (props: any) => {
             <SidebarNavlink setMenu={props.setMenu} />
             <div className='pt-3 flex items-center justify-between border-t-2 border-zinc-700'>
                 <div className='flex items-center gap-2 w-full'>
-                    <Image className='w-10 h-10 object-cover object-center rounded-full overflow-hidden border-2 border-container' height={40} width={40} quality={100} src={currentUser?.photoURL || '/images/user.jpeg'} />
+                    <Image height={40} width={40} quality={100} className='w-10 h-10 object-cover object-center rounded-full overflow-hidden border-2 border-container' src={currentUser?.photoURL || '/images/user.jpeg'} alt=''/>
                     <p className='capitalize'>{currentUser?.displayName || 'user'}</p>
                 </div>
                 {currentUser ? <div onClick={logOut} className='flex items-center gap-2 cursor-pointer w-fit'><span>logout</span><FaRightFromBracket className='w-6 h-6' />

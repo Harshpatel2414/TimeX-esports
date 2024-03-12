@@ -13,6 +13,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { Timestamp, doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { AuthContextProviderProps, UserType } from '../../new-types';
+import firebase from 'firebase/compat/app';
 
 // Create auth context
 const AuthContext = createContext({});
@@ -25,12 +27,12 @@ export const AuthContextProvider = ({
     children
 }: AuthContextProviderProps) => {
     // Define the constants for the user and loading state
-    const [currentUser, setCurrentUser] = useState<UserType>({})
+    const [currentUser, setCurrentUser] = useState<UserType>(Object)
     const [loading, setLoading] = useState<Boolean>(true);
     const router = useRouter()
     // Update the state depending on auth
     useEffect(() => {
-        const data = onAuthStateChanged(auth, (user) => {
+        const data = onAuthStateChanged(auth, (user: any) => {
             setCurrentUser(user);
             return () => {
                 data()
@@ -53,12 +55,24 @@ export const AuthContextProvider = ({
         }
     };
     // Sign up the user
-    const signUpWithEmail = async (e) => {
+    const signUpWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const image = e.target[0].files[0]
-        const username = e.target[1].value
-        const email = e.target[2].value
-        const password = e.target[3].value
+        const target = e.target as typeof e.target & {
+            elements: {
+                0: HTMLInputElement;
+                1: HTMLInputElement;
+                2: HTMLInputElement;
+                3: HTMLInputElement;
+            };
+        };
+        const imageInput = target.elements[0] as HTMLInputElement;
+        const image = imageInput.files ? imageInput.files[0] : null;
+        if (!image) {
+            return toast.error("Please select an image");
+        }
+        const username = target.elements[1].value;
+        const email = target.elements[2].value;
+        const password = target.elements[3].value;
         try {
             const res = await createUserWithEmailAndPassword(auth, email, password);
             const storageRef = ref(storage, `profile${Timestamp.now().nanoseconds}`);
@@ -78,27 +92,33 @@ export const AuthContextProvider = ({
                         toast.success('Sign up Successfully!')
                         router.push('/')
                     }
-                    catch (error) {
+                    catch (error:any) {
                         console.log(error);
                         handleError(error)
                     }
                 });
             });
-        } catch (error) {
+        } catch (error:any) {
             handleError(error)
         }
     };
 
     // Login the user
-    const logIn = async (e) => {
+    const logIn = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const email = e.target[0].value
-        const password = e.target[1].value
+        const target = e.target as typeof e.target & {
+            elements: {
+                0: HTMLInputElement;
+                1: HTMLInputElement;
+            };
+        };
+        const email = target.elements[0].value;
+        const password = target.elements[1].value;
         try {
             await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login Successfully!')
             router.push('/');
-        } catch (error) {
+        } catch (error:any) {
             handleError(error)
         }
     };
