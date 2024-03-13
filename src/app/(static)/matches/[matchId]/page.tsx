@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 import { FaUsers } from 'react-icons/fa'
 
 const MatchDetails = ({ params }: any) => {
+  let id = params.matchId
   let { currentUser } = useAuth()
   if (!currentUser) {
     toast((t) => (
@@ -22,7 +23,7 @@ const MatchDetails = ({ params }: any) => {
     ));
     redirect('/matches');
   }
-  let id = params.matchId
+
   return (
     <div className='px-5 flex items-center flex-col gap-10 py-20'>
       <SectionHead title={`Match ${id} - Details`} />
@@ -55,7 +56,7 @@ const MatchDetails = ({ params }: any) => {
             <p>Mar 01, 5:00 PM</p>
             <div className='flex items-center gap-2'><FaUsers className='w-5 h-5' /><span>20/25 Teams</span></div>
           </div>
-          <Link href='/register' className='btn-primary w-full'>Register</Link>
+          <Link href={`/matches/${id}/register`}  className='btn-primary w-full'>Register</Link>
         </div>
       </div>
       <div className='flex flex-wrap gap-20 p-10 w-full lg:w-3/4 bg-zinc-900 rounded-lg'>
