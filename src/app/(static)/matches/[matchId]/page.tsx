@@ -18,9 +18,6 @@ const MatchDetails = ({ params }: any) => {
         <button className='btn-primary ml-2' onClick={() => toast.dismiss(t.id)}>
           <Link href={'/login'}>Login</Link>
         </button>
-        <button className='btn-secondary ml-2' onClick={() => toast.dismiss(t.id)}>
-          Close
-        </button>
       </span>
     ));
     redirect('/matches');

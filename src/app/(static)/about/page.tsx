@@ -7,7 +7,7 @@ const About = () => {
  
   return (
     <div>
-      <div className='py-10'>
+      <div className='py-10 bg-zinc-950'>
         <h1 className='text-2xl lg:text-5xl text-center font-bold tracking-widest'>About Page</h1>
       </div>
       <div className="bg-zinc-950 w-full relative z-0 flex flex-col-reverse py-24 lg:flex-row items-center gap-20 px-5 justify-center lg:justify-around">

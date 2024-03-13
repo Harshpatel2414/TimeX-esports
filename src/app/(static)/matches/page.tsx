@@ -7,7 +7,7 @@ const page = () => {
       <h1 className='text-2xl'>Tournaments</h1>
       <div className='text-center'>
         <p className='text-md text-container'>Our Matches</p>
-        <h1 className='text-3xl uppercase font-bold'>paly to earn money</h1>
+        <h1 className='text-3xl uppercase font-bold'>play to earn money</h1>
       </div>
       <MatchList/>
     </div>
