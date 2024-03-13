@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <>
       <html lang="en">
+        <meta name="mobile-web-app-capable" content="yes" />
         <body className={inter.className} >
           <AuthContextProvider>
             {children}
