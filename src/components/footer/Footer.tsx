@@ -11,7 +11,7 @@ const Footer = () => {
                     <div>
                         <Image width={96} height={40} quality={100} src="/images/logo.png" alt="" />
                     </div>
-                    <p className='text-sm text-zinc-600'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, maxime Lorem ipsum dolor sit amet</p>
+                    <p className='text-sm text-zinc-600'>Timex Esports is your premier destination for BGMI tournaments and matches. Compete, win, and earn rewards in the world of mobile gaming. Join our community today!</p>
                     <span className='text-md'>Follow Us</span>
                     <div className='flex gap-4'>
                         <Link href='/'><FaInstagram className='w-8 h-8' /></Link>
@@ -33,7 +33,8 @@ const Footer = () => {
                     <ul className='flex flex-col gap-2 text-zinc-500 text-sm'>
                         <li>Top Player</li>
                         <li>Profile</li>
-                        <li>Results</li>
+                        <Link className='underline' href={'/termsofservice'}>Terms & Service</Link>
+                        <Link className='underline' href={'/privacypolicy'}>Privacy Policy</Link>
                     </ul>
                 </div>
                 <div className='flex flex-col gap-4'>

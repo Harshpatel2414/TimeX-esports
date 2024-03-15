@@ -83,7 +83,7 @@ export default function Home() {
             <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">Our custom Matches<br /> done on time</h1>
           </div>
           <div>
-            <p className="text-sm text-zinc-700 mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, enim omnis. Beatae cupiditate doloremque dolorum.</p>
+            <p className="text-sm text-zinc-700 mb-4">Timex Esports offers exciting BGMI tournaments, customizable match hosting, and rewarding gameplay experiences. Join our vibrant community today and elevate your mobile gaming journey with us!</p>
             <div className="flex items-center gap-4">
               <Link href={'/leaderboard'} className="btn-primary">Leaderboard</Link>
               <Link href={'/about'} className="btn-primary">View More</Link>

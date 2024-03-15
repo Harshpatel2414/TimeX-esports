@@ -60,25 +60,25 @@ export const about = [
     id: nanoid(),
     icon: <FaMap className="w-10 h-10 text-container" />,
     title: 'Erangle',
-    para: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum iusto reiciendis, reprehenderit tempora dolore.'
+    para: 'Explore detailed maps with diverse terrains and strategic locations, enhancing your tactical gameplay experience.'
   },
   {
     id: nanoid(),
     icon: <FaUserShield className="w-10 h-10 text-container" />,
     title: 'Antiban System',
-    para: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum iusto reiciendis, reprehenderit tempora dolore.'
+    para: 'Enjoy fair and secure gameplay with our robust anti-ban system, ensuring a level playing field for all participants.'
   },
   {
     id: nanoid(),
     icon: <FaCar className="w-10 h-10 text-container" />,
     title: 'Vehicle',
-    para: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum iusto reiciendis, reprehenderit tempora dolore.'
+    para: 'Access a variety of vehicles to navigate battlegrounds swiftly, providing strategic advantages and dynamic gameplay moments.'
   },
   {
     id: nanoid(),
     icon: <FaGun className="w-10 h-10 text-container" />,
     title: 'Guns',
-    para: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum iusto reiciendis, reprehenderit tempora dolore.'
+    para: 'Discover an arsenal of weapons tailored for every playstyle, offering a thrilling combat experience with an array of firearms at your disposal.'
   },
 ]
 

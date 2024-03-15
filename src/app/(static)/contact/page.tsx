@@ -11,7 +11,7 @@ const Contact = () => {
                     <div>
                         <h1 className=' opacity-10 text-6xl font-black tracking-widest'>Join Us</h1>
                         <h1 className='text-3xl font-bold mb-3'>CONTACT US AND SOLVE YOUR PROBLEM</h1>
-                        <p className='text-sm text-zinc-600'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum iusto sapiente ut vel reprehenderit, atque adipisci. Laudantium animi ut suscipit.</p>
+                        <p className='text-sm text-zinc-600'>Have a question, suggestion, or just want to get in touch? We'd love to hear from you! Our team at Timex Esports is here to assist you with any inquiries regarding our services, tournaments, matches, or anything else related to esports. Feel free to reach out to us using the contact form below, and we'll get back to you as soon as possible. Thank you for choosing Timex Esports!</p>
                     </div>
                     <div>
                         <h1 className='text-lg'>Information</h1>
