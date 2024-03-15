@@ -1,8 +1,10 @@
-"use client"
 import React, { useState } from "react";
 
-const Register = ({ makePayment }) => {
+interface Props {
+    makePayment: (data: { productId: string }) => void;
+}
 
+const Register: React.FC<Props> = ({ makePayment }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     return (

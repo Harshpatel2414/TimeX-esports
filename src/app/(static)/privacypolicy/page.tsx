@@ -76,7 +76,7 @@ const items: CollapseProps['items'] = [
     },
 {
     key: '5',
-        label: <h1 className="text-zinc-900 font-semibold">Children's Privacy</h1>,
+        label: <h1 className="text-zinc-900 font-semibold">Children&apos;s Privacy</h1>,
             children: <p>Our BGMI tournament and match services are not intended for individuals under the age of 13. We do not knowingly collect personal information from individuals under the age of 13. If you believe that we have inadvertently collected personal information from a child under 13, please contact us to request deletion.</p>,
     },
 {
@@ -96,7 +96,7 @@ const PrivacyPolicy = () => {
             <div className='md:w-4/5'>
                 <h1 className='text-xl md:text-3xl mb-3 font-semibold tracking text-container'>Timex Esport: Privacy Policy</h1>
                 <p className='text-zinc-500 text-sm mb-2'>Last Updated : March 15, 2024</p>
-                <p className='text-zinc-400 text-sm'>This Privacy Policy describes how Timex Esports ("we", "us", or "our") collects, uses, and shares your personal information when you use our website and participate in BGMI tournaments and matches, as well as earning opportunities associated with winning matches.</p>
+                <p className='text-zinc-400 text-sm'>This Privacy Policy describes how Timex Esports (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and shares your personal information when you use our website and participate in BGMI tournaments and matches, as well as earning opportunities associated with winning matches.</p>
             </div>
             <Collapse
                 className='w-full md:w-4/5 text-container bg-zinc-400'

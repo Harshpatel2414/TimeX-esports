@@ -32,7 +32,7 @@ const items: CollapseProps['items'] = [
     {
         key: '6',
         label: <h1 className="text-zinc-900 font-semibold">Limitation of Liability</h1>,
-        children: <p>In no event shall Timex Esport be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the platform, including but not limited to loss of profits, data, or goodwill. Timex Esport's total liability for any claim arising out of these Terms shall not exceed the amount paid by you, if any, to Timex Esport during the twelve-month period preceding the event giving rise to the claim.</p>,
+        children: <p>In no event shall Timex Esport be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the platform, including but not limited to loss of profits, data, or goodwill. Timex Esport&apos;s total liability for any claim arising out of these Terms shall not exceed the amount paid by you, if any, to Timex Esport during the twelve-month period preceding the event giving rise to the claim.</p>,
     },
     {
         key: '7',
@@ -45,7 +45,7 @@ const TermsOfService = () => {
         <div className='bg-zinc-900 px-5 flex py-10 gap-10 flex-col items-center'>
             <div className='md:w-4/5'>
                 <h1 className='text-xl md:text-3xl mb-5 font-semibold tracking text-container'>Timex Esport: Terms of Service</h1>
-                <p className='text-zinc-400 text-sm'>Welcome to Timex Esport! These Terms of Service "Terms" govern your use of our website and services, so please read them carefully. By accessing or using Timex Esport, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not access Timex Esport.</p>
+                <p className='text-zinc-400 text-sm'>Welcome to Timex Esport! These Terms of Service &quot;Terms&quot; govern your use of our website and services, so please read them carefully. By accessing or using Timex Esport, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not access Timex Esport.</p>
             </div>
             <Collapse
                 className='w-full md:w-4/5 text-container bg-zinc-400'

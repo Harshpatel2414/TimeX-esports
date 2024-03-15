@@ -1,8 +1,9 @@
 "use client"
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Register from './Register';
 import Loading from '../Loading';
 import { useRouter } from 'next/navigation';
+import Razorpay from 'razorpay';
 
 interface Player {
     name: string;
@@ -16,6 +17,18 @@ const TeamRegistrationForm = () => {
     const [leaderEmail, setLeaderEmail] = useState<string>('');
     const [leaderMobile, setLeaderMobile] = useState<string>('');
     const [playerDetails, setPlayerDetails] = useState<Player[]>([{ name: '', email: '' }]);
+    const router = useRouter()
+    useEffect(() => {
+        const loadRazorpay = async () => {
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+            script.async = true;
+            document.body.appendChild(script);
+        };
+
+        loadRazorpay();
+    }, []);
+
 
     const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -40,10 +53,8 @@ const TeamRegistrationForm = () => {
         newRegistrations.splice(index, 1);
         setPlayerDetails(newRegistrations);
     };
-    const router = useRouter()
 
-
-    const makePayment = async ({ productId = null }) => {
+    const makePayment = async ({ productId = null }: { productId?: string | null }) => {
         // "use server"
         const key = process.env.NEXT_APP_RAZORPAY_KEY_ID;
         console.log(key);
@@ -58,8 +69,7 @@ const TeamRegistrationForm = () => {
             amount: order.amount,
             order_id: order.id,
             description: "Understanding RazorPay Integration",
-            // image: logoBase64,
-            handler: async function (response) {
+            handler: async function (response: any) { // Using 'any' as a generic type for response
                 // if (response.length==0) return <Loading/>;
                 console.log(response);
                 const data = await fetch("http://localhost:3000/api/paymentverify", {
@@ -74,8 +84,6 @@ const TeamRegistrationForm = () => {
                     }),
                 });
 
-
-
                 const res = await data.json();
 
                 console.log("response verify==", res)
@@ -84,11 +92,6 @@ const TeamRegistrationForm = () => {
                     console.log("redirected.......")
                     router.push("/paymentsuccess?paymentid=" + response.razorpay_payment_id)
                 }
-
-                // Validate payment at server - using webhooks is a better idea.
-                // alert(response.razorpay_payment_id);
-                // alert(response.razorpay_order_id);
-                // alert(response.razorpay_signature);
             },
             prefill: {
                 name: "Timex-Esports",
@@ -97,13 +100,15 @@ const TeamRegistrationForm = () => {
             },
         };
 
-        const paymentObject = new window.Razorpay(options);
+        const paymentObject = new (window as any).Razorpay(options);
         paymentObject.open();
 
-        paymentObject.on("payment.failed", function (response) {
+        paymentObject.on("payment.failed", function (response: any) {
             alert("Payment failed. Please try again. Contact support for help");
         });
     };
+
+
     // const handleSubmit = (event: React.FormEvent) => {
     //     event.preventDefault();
     //     console.log({
