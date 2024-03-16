@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 import Register from './Register';
 import Loading from '../Loading';
 import { useRouter } from 'next/navigation';
-import Razorpay from 'razorpay';
+import toast from 'react-hot-toast';
 
 interface Player {
     name: string;
@@ -28,7 +28,6 @@ const TeamRegistrationForm = () => {
 
         loadRazorpay();
     }, []);
-
 
     const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -57,11 +56,11 @@ const TeamRegistrationForm = () => {
     const makePayment = async ({ productId = null }: { productId?: string | null }) => {
         // "use server"
         const key = process.env.NEXT_APP_RAZORPAY_KEY_ID;
-        console.log(key);
+        
         // Make API call to the serverless API
         const data = await fetch("http://localhost:3000/api/razorpay");
         const { order } = await data.json();
-        console.log(order.id);
+       
         const options = {
             key: key,
             name: "Timex-Esports",
@@ -69,14 +68,14 @@ const TeamRegistrationForm = () => {
             amount: order.amount,
             order_id: order.id,
             description: "Understanding RazorPay Integration",
-            handler: async function (response: any) { // Using 'any' as a generic type for response
-                // if (response.length==0) return <Loading/>;
-                console.log(response);
-                const data = await fetch("http://localhost:3000/api/paymentverify", {
+            handler: async function (response: any) {
+
+                // Send payment details to your server for verification
+                const verificationResponse = await fetch("http://localhost:3000/api/paymentverify", {
                     method: "POST",
-                    // headers: {
-                    //   // Authorization: 'YOUR_AUTH_HERE'
-                    // },
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify({
                         razorpay_payment_id: response.razorpay_payment_id,
                         razorpay_order_id: response.razorpay_order_id,
@@ -84,13 +83,15 @@ const TeamRegistrationForm = () => {
                     }),
                 });
 
-                const res = await data.json();
+                const verificationResult = await verificationResponse.json();
 
-                console.log("response verify==", res)
-
-                if (res?.message == "success") {
-                    console.log("redirected.......")
-                    router.push("/paymentsuccess?paymentid=" + response.razorpay_payment_id)
+                if (verificationResult?.message === "Signature verified") {
+                    toast.success("Payment Successfull")
+                    // Redirect user to payment success page
+                    router.push("/paymentsuccess?paymentid=" + response.razorpay_payment_id);
+                } else {
+                    // Handle payment failure
+                    toast.error("Payment UnSuccessfull")
                 }
             },
             prefill: {
@@ -104,7 +105,7 @@ const TeamRegistrationForm = () => {
         paymentObject.open();
 
         paymentObject.on("payment.failed", function (response: any) {
-            alert("Payment failed. Please try again. Contact support for help");
+            toast.error("Payment UnSuccessfull")
         });
     };
 
