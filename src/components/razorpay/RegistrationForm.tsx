@@ -58,7 +58,7 @@ const TeamRegistrationForm = () => {
         const key = process.env.NEXT_APP_RAZORPAY_KEY_ID;
         
         // Make API call to the serverless API
-        const data = await fetch("http://localhost:3000/api/razorpay");
+        const data = await fetch("https://xesports.vercel.app/api/razorpay");
         const { order } = await data.json();
        
         const options = {
@@ -71,7 +71,7 @@ const TeamRegistrationForm = () => {
             handler: async function (response: any) {
 
                 // Send payment details to your server for verification
-                const verificationResponse = await fetch("http://localhost:3000/api/paymentverify", {
+                const verificationResponse = await fetch("https://xesports.vercel.app/api/paymentverify", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
